@@ -7,6 +7,7 @@ const NavBar = () => {
       <div className={styles.logoContainer}>
         <img className={styles.logo} src={logo} alt='Logo' />
       </div>
+      <div className={styles.unitsContainer}></div>
     </nav>
   );
 };
