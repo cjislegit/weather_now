@@ -1,6 +1,10 @@
 .navBarContainer {
-  margin: 1rem;
+  padding: 1rem;
   display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {

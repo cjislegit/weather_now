@@ -14,5 +14,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
   background-color: var(--neutral-900);
+  color: var(--neutral-0);
+}
+
+body {
+  max-width: 100%;
 }
