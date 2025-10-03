@@ -1,0 +1,18 @@
+:root {
+  --neutral-900: #02012c;
+  --neutral-800: #262540;
+  --neutral-700: #302f4a;
+  --neutral-600: #3c3b5e;
+  --neutral-200: #d4d3d9;
+  --neutral-0: #fff;
+  --orange-500: #ff820a;
+  --blue-500: #4658d9;
+  --blue-700: #2b1b9c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--neutral-900);
+}
