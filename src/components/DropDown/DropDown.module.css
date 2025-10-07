@@ -1,0 +1,12 @@
+.dropDownContainer {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.dropDownButton {
+  background-color: var(--neutral-800);
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
