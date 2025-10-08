@@ -10,6 +10,12 @@ const DropDown = ({ title }) => {
         <span>{title}</span>
         <img src={dropdown} alt='dropdown arrow' />
       </div>
+      <div className={style.dropDownList}>
+        <div className={style.dropDownUnits}>
+          <div className={style.dropDownUnitsTitle}>Switch to Imperial</div>
+        </div>
+        <div className={style.dropDownDays}></div>
+      </div>
     </div>
   );
 };
