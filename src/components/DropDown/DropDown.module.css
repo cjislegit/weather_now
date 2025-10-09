@@ -44,3 +44,10 @@
 .dropDownUnitsOption {
   padding: 0.625rem 0;
 }
+
+.selected {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--neutral-700);
+  border-radius: 0.5rem;
+}

@@ -1,6 +1,7 @@
 import style from './DropDown.module.css';
 import dropdown from '../../assets/images/icon-dropdown.svg';
 import gear from '../../assets/images/icon-units.svg';
+import check from '../../assets/images/icon-checkmark.svg';
 
 const DropDown = ({ title }) => {
   return (
@@ -15,7 +16,10 @@ const DropDown = ({ title }) => {
           <div className={style.dropDownUnitsTitle}>Switch to Imperial</div>
           <div className={style.dropDownUnitsSection}>
             <div className={style.dropDownUnitsSectionTitle}>Temperature</div>
-            <div className={style.dropDownUnitsOption}>Celsius (°C)</div>
+            <div className={`${style.dropDownUnitsOption} ${style.selected}`}>
+              <span>Celsius (°C)</span>
+              <img src={check} alt='check mark' />
+            </div>
             <div className={style.dropDownUnitsOption}>Fahrenheit (°F)</div>
           </div>
           <div className={style.dropDownUnitsSection}>
