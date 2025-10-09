@@ -22,4 +22,25 @@
   z-index: 10;
   width: max-content;
   border-radius: 0.75rem;
+  min-width: 15.0625rem;
+}
+
+.dropDownUnitsTitle {
+  font-weight: medium;
+  padding: 0.625rem 0.5rem;
+}
+
+.dropDownUnitsSection {
+  padding: 0.625rem 0.5rem;
+  border-bottom: solid 1px var(--neutral-600);
+}
+
+.dropDownUnitsSectionTitle {
+  font-size: 0.875rem;
+  color: var(--neutral-300);
+  margin-bottom: 0.5rem;
+}
+
+.dropDownUnitsOption {
+  padding: 0.625rem 0;
 }
