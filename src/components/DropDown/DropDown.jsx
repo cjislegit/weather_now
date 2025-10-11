@@ -20,17 +20,29 @@ const DropDown = ({ title }) => {
               <span>Celsius (°C)</span>
               <img src={check} alt='check mark' />
             </div>
-            <div className={style.dropDownUnitsOption}>Fahrenheit (°F)</div>
+            <div className={style.dropDownUnitsOption}>
+              <spam>Fahrenheit (°F)</spam>
+            </div>
           </div>
           <div className={style.dropDownUnitsSection}>
             <div className={style.dropDownUnitsSectionTitle}>Wind Speed</div>
-            <div className={style.dropDownUnitsOption}>km/h</div>
-            <div className={style.dropDownUnitsOption}>mph</div>
+            <div className={`${style.dropDownUnitsOption} ${style.selected}`}>
+              <spam>km/h</spam>
+              <img src={check} alt='check mark' />
+            </div>
+            <div className={style.dropDownUnitsOption}>
+              <spam>mph</spam>
+            </div>
           </div>
           <div className={style.dropDownUnitsSection}>
             <div className={style.dropDownUnitsSectionTitle}>Precipitation</div>
-            <div className={style.dropDownUnitsOption}>Millimeters (mm)</div>
-            <div className={style.dropDownUnitsOption}>Inches (In)</div>
+            <div className={`${style.dropDownUnitsOption} ${style.selected}`}>
+              <spam>Millimeters (mm)</spam>
+              <img src={check} alt='check mark' />
+            </div>
+            <div className={style.dropDownUnitsOption}>
+              <spam>Inches (In)</spam>
+            </div>
           </div>
         </div>
         <div className={style.dropDownDays}></div>
