@@ -26,3 +26,7 @@ html {
 body {
   max-width: 100%;
 }
+
+main {
+  padding-top: 3rem;
+}

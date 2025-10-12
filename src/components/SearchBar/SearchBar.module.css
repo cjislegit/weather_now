@@ -1,0 +1,27 @@
+.searchBarContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search {
+  background-color: var(--neutral-800);
+  padding: 1.125rem 1.5rem;
+  border-radius: 0.75rem;
+  width: 100%;
+  display: flex;
+}
+
+.search img {
+  margin-right: 1rem;
+  color: var(--neutral-200);
+}
+
+.search input {
+  background-color: transparent;
+  color: var(--neutral-200);
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: DM Sans, sans-serif;
+  font-size: 1.25rem;
+}
