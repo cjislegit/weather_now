@@ -28,6 +28,7 @@
 .dropDownUnitsTitle {
   font-weight: medium;
   padding: 0.625rem 0.5rem;
+  cursor: pointer;
 }
 
 .dropDownUnitsSection {
@@ -47,14 +48,14 @@
   padding-left: 0.5rem;
 }
 
-.dropDownUnitsOption {
+.dropDownUnitsOption,
+.dropDownDayOption {
   padding: 0.625rem 0.5rem;
-  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 .selected {
-  display: flex;
-  justify-content: space-between;
   background-color: var(--neutral-700);
   border-radius: 0.5rem;
 }

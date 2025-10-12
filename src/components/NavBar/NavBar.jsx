@@ -9,7 +9,7 @@ const NavBar = () => {
         <img className={styles.logo} src={logo} alt='Logo' />
       </div>
       <div className={styles.unitsContainer}>
-        <DropDown title='Units' />
+        <DropDown type='units' />
       </div>
     </nav>
   );
