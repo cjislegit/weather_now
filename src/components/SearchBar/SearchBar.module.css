@@ -1,6 +1,9 @@
 .searchBarContainer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .search {
@@ -9,6 +12,7 @@
   border-radius: 0.75rem;
   width: 100%;
   display: flex;
+  max-width: 36.875rem;
 }
 
 .search img {
@@ -24,4 +28,24 @@
   width: 100%;
   font-family: DM Sans, sans-serif;
   font-size: 1.25rem;
+}
+
+.searchBarContainer input[type='button'] {
+  width: 100%;
+  background-color: var(--blue-500);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-family: DM Sans, sans-serif;
+  font-size: 1.25rem;
+  padding: 1rem 0;
+  margin-top: 0.75rem;
+  max-width: 36.875rem;
+}
+
+@media (min-width: 768px) {
+  .searchBarContainer input[type='button'] {
+    max-width: 7.125rem;
+    margin-top: 0;
+  }
 }
