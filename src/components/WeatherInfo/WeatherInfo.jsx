@@ -16,6 +16,24 @@ const WeatherInfo = () => {
           <div className={styles.temp}>20°</div>
         </div>
       </div>
+      <div className={styles.weatherInfoDetails}>
+        <div className={styles.detailsItem}>
+          <div className={styles.label}>Feels Like</div>
+          <div className={styles.value}>18°</div>
+        </div>
+        <div className={styles.detailsItem}>
+          <div className={styles.label}>Humidity</div>
+          <div className={styles.value}>46%</div>
+        </div>
+        <div className={styles.detailsItem}>
+          <div className={styles.label}>Wind</div>
+          <div className={styles.value}>14 km/h</div>
+        </div>
+        <div className={styles.detailsItem}>
+          <div className={styles.label}>Precipitation</div>
+          <div className={styles.value}>0 mm</div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .weatherInfoDisplay {
@@ -55,6 +56,11 @@
   align-items: center;
   font-size: 6rem;
   font-weight: semi-bold;
+}
+
+.detailsItem {
+  padding: 1.25rem;
+  background-color: var(--neutral-800);
 }
 
 @media (min-width: 768px) {
