@@ -13,7 +13,7 @@ const WeatherInfo = () => {
           <div className={styles.icon}>
             <img src={overcastIcon} alt='' />
           </div>
-          <div className={styles.temp}>20</div>
+          <div className={styles.temp}>20°</div>
         </div>
       </div>
     </div>
