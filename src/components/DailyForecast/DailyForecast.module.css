@@ -1,0 +1,14 @@
+.dailyForecastContainer {
+  width: 100%;
+  padding-top: 2rem;
+  font-family: DM Sans, sans-serif;
+}
+
+.dailyForecastTitle {
+  font-size: 1.25rem;
+  font-weight: semi-bold;
+}
+
+.dailyForecastCardContainer {
+  padding-top: 1.25rem;
+}
