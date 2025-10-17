@@ -1,0 +1,7 @@
+.hourlyForecastContainer {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--neutral-800);
+  padding: 1.25rem 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
