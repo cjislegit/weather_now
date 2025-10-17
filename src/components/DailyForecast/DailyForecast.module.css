@@ -14,7 +14,7 @@
   padding-top: 1.25rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
 }
 
@@ -27,6 +27,7 @@
   padding: 1rem 0.625rem;
   flex: 1;
   max-width: 6.4375rem;
+  min-width: 6.4375rem;
   border-radius: 0.75rem;
 }
 
@@ -47,7 +48,12 @@
 }
 
 @media (min-width: 768px) {
+  .dailyForecastCardContainer {
+    gap: 1rem;
+  }
+
   .dailyForecastCard {
     max-width: 5.5625rem;
+    min-width: 5.5625rem;
   }
 }
