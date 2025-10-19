@@ -46,3 +46,12 @@
 .left img {
   max-width: 2.5rem;
 }
+
+@media (min-width: 1440px) {
+  .hourlyForecastContainer {
+    max-width: 24rem;
+    max-height: 39.59375rem;
+    overflow: scroll;
+    margin-top: 0;
+  }
+}

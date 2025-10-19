@@ -6,8 +6,10 @@ import styles from './WeatherLayout.module.css';
 const WeatherLayout = () => {
   return (
     <div className={styles.weatherLayout}>
-      <WeatherInfo />
-      <DailyForecast />
+      <div className={styles.left}>
+        <WeatherInfo />
+        <DailyForecast />
+      </div>
       <HourlyForecast />
     </div>
   );
