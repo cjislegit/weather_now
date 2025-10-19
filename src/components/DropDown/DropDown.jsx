@@ -22,7 +22,7 @@ const DropDown = ({ type }) => {
   return (
     <div className={style.dropDownContainer}>
       <div onClick={toggleDropDown} className={style.dropDownButton}>
-        <img src={gear} alt='Gear' />
+        {type === 'units' && <img src={gear} alt='Gear' />}
         <span>{type === 'units' ? 'Units' : 'Monday'}</span>
         <img src={dropdown} alt='dropdown arrow' />
       </div>
