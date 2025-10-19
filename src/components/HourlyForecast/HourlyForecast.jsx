@@ -16,7 +16,70 @@ const HourlyForecast = () => {
             <div className={styles.time}>1 PM</div>
           </div>
           <div className={styles.right}>
-            <div className={styles.temp}>20</div>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
+          </div>
+        </div>
+        <div className={styles.hourlyForecastCard}>
+          <div className={styles.left}>
+            <img src={rain} alt='rain icon' />
+            <div className={styles.time}>1 PM</div>
+          </div>
+          <div className={styles.right}>
+            <div className={styles.temp}>20°</div>
           </div>
         </div>
       </div>
