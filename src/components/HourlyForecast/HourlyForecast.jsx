@@ -5,7 +5,7 @@ const HourlyForecast = () => {
   return (
     <div className={styles.hourlyForecastContainer}>
       <div className={styles.hourlyForecastHeader}>
-        <div>Hourly forecast</div>
+        <div className={styles.hourlyForecastTitle}>Hourly forecast</div>
         <DropDown />
       </div>
     </div>

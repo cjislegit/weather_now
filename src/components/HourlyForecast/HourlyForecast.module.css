@@ -7,9 +7,12 @@
 }
 
 .hourlyForecastHeader {
-  font-size: 1.25rem;
-  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.hourlyForecastTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
 }
