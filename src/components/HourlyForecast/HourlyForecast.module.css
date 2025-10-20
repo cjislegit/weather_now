@@ -51,7 +51,24 @@
   .hourlyForecastContainer {
     max-width: 24rem;
     max-height: 39.59375rem;
-    overflow: scroll;
     margin-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neutral-700) var(--neutral-800);
+  }
+
+  .hourlyForecastCardContainer::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+
+  .hourlyForecastCardContainer::-webkit-scrollbar-track {
+    background: var(--neutral-800);
+    border-radius: 1.25rem;
+  }
+
+  .hourlyForecastCardContainer::-webkit-scrollbar-thumb {
+    background: var(--neutral-700);
+    border-radius: 1.25rem;
   }
 }
