@@ -2,8 +2,17 @@
   display: flex;
   max-width: 100%;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBarLimit {
+  width: 100%;
+  max-width: 90rem;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .logo {
