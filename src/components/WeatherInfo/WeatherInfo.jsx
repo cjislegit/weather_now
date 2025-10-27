@@ -1,7 +1,7 @@
 import styles from './WeatherInfo.module.css';
 import overcastIcon from '../../assets/images/icon-overcast.webp';
 
-const WeatherInfo = ({ city, todayDate }) => {
+const WeatherInfo = ({ city, todayDate, weather }) => {
   return (
     <div className={styles.weatherInfoContainer}>
       <div className={styles.weatherInfoDisplay}>
@@ -13,7 +13,9 @@ const WeatherInfo = ({ city, todayDate }) => {
           <div className={styles.icon}>
             <img src={overcastIcon} alt='' />
           </div>
-          <div className={styles.temp}>20°</div>
+          <div className={styles.temp}>
+            {weather.current.temperature.toFixed()}°
+          </div>
         </div>
       </div>
       <div className={styles.weatherInfoDetails}>

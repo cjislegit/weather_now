@@ -42,7 +42,7 @@ const Home = () => {
       <Hero />
       <main>
         <SearchBar />
-        <WeatherLayout city={city} todayDate={todayDate} />
+        <WeatherLayout city={city} todayDate={todayDate} weather={weather} />
       </main>
     </div>
   );
