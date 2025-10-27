@@ -9,34 +9,32 @@ import { getWeather } from '../../api/openMetero';
 import { getCityFromCoords } from '../../api/geocoding';
 
 const Home = () => {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState('Fullerton');
+  const [todayDate, setTodayDate] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (pos) => {
-          try {
-            const { latitude, longitude } = pos.coords;
-            const weatherData = await getWeather(latitude, longitude);
-            const cityName = await getCityFromCoords(latitude, longitude);
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    setTodayDate(formattedDate);
 
-            setWeather(weatherData);
-            setCity(cityName);
-          } catch (e) {
-            setError(e.message);
-          }
-        },
-        (err) => setError(err.message)
-      );
-    } else {
-      setError('Geolocation is not supported by this browser.');
-    }
+    const fetchWeatherData = async () => {
+      try {
+        const weatherData = await getWeather(location.lat, location.lon);
+        setWeather(weatherData);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+    fetchWeatherData();
   }, []);
-
-  console.log('User location:', location);
 
   return (
     <div className={styles.homeContainer}>
@@ -44,7 +42,7 @@ const Home = () => {
       <Hero />
       <main>
         <SearchBar />
-        <WeatherLayout />
+        <WeatherLayout city={city} todayDate={todayDate} />
       </main>
     </div>
   );

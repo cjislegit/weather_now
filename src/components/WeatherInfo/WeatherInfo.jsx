@@ -1,13 +1,13 @@
 import styles from './WeatherInfo.module.css';
 import overcastIcon from '../../assets/images/icon-overcast.webp';
 
-const WeatherInfo = () => {
+const WeatherInfo = ({ city, todayDate }) => {
   return (
     <div className={styles.weatherInfoContainer}>
       <div className={styles.weatherInfoDisplay}>
         <div className={styles.weatherInfoLocation}>
-          <div className={styles.location}>Fullerton, CA</div>
-          <div className={styles.date}>Tuesday, Nov 11, 2025</div>
+          <div className={styles.location}>{city}</div>
+          <div className={styles.date}>{todayDate}</div>
         </div>
         <div className={styles.weatherInfoTemp}>
           <div className={styles.icon}>
