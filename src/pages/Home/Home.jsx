@@ -29,6 +29,7 @@ const Home = () => {
       try {
         const weatherData = await getWeather(location.lat, location.lon);
         setWeather(weatherData);
+        console.log(weatherData);
       } catch (err) {
         setError(err.message);
       }
@@ -42,7 +43,11 @@ const Home = () => {
       <Hero />
       <main>
         <SearchBar />
-        <WeatherLayout city={city} todayDate={todayDate} weather={weather} />
+        {weather ? (
+          <WeatherLayout city={city} todayDate={todayDate} weather={weather} />
+        ) : (
+          <p>Loading weather data...</p>
+        )}
       </main>
     </div>
   );

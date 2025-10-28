@@ -4,7 +4,13 @@ export async function getWeather(lat, lon) {
   const params = {
     latitude: lat,
     longitude: lon,
-    current: 'temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
+    current: [
+      'temperature_2m',
+      'apparent_temperature',
+      'relative_humidity_2m',
+      'precipitation',
+      'wind_speed_10m',
+    ],
     hourly: 'temperature_2m',
     daily: 'weather_code,temperature_2m_max,temperature_2m_min',
   };
@@ -27,9 +33,10 @@ export async function getWeather(lat, lon) {
     current: {
       time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
       temperature: current.variables(0).value(), // Current is only 1 value, therefore `.value()`
-      weatherCode: current.variables(1).value(),
-      windSpeed: current.variables(2).value(),
-      windDirection: current.variables(3).value(),
+      apparent_temperature: current.variables(1).value(),
+      relative_humidity_2m: current.variables(2).value(),
+      precipitation: current.variables(3).value(),
+      wind_speed_10m: current.variables(4).value(),
     },
     hourly: {
       time: [

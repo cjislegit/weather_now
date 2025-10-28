@@ -21,19 +21,25 @@ const WeatherInfo = ({ city, todayDate, weather }) => {
       <div className={styles.weatherInfoDetails}>
         <div className={styles.detailsItem}>
           <div className={styles.label}>Feels Like</div>
-          <div className={styles.value}>18°</div>
+          <div className={styles.value}>
+            {weather.current.apparent_temperature.toFixed()}°
+          </div>
         </div>
         <div className={styles.detailsItem}>
           <div className={styles.label}>Humidity</div>
-          <div className={styles.value}>46%</div>
+          <div className={styles.value}>
+            {weather.current.relative_humidity_2m}%
+          </div>
         </div>
         <div className={styles.detailsItem}>
           <div className={styles.label}>Wind</div>
-          <div className={styles.value}>14 km/h</div>
+          <div className={styles.value}>
+            {weather.current.wind_speed_10m.toFixed()} km/h
+          </div>
         </div>
         <div className={styles.detailsItem}>
           <div className={styles.label}>Precipitation</div>
-          <div className={styles.value}>0 mm</div>
+          <div className={styles.value}>{weather.current.precipitation} mm</div>
         </div>
       </div>
     </div>
