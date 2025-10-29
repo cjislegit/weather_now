@@ -1,7 +1,39 @@
 import styles from './WeatherInfo.module.css';
-import overcastIcon from '../../assets/images/icon-overcast.webp';
+import drizzleIcon from '../../assets/images/icon-drizzle.webp';
+import rainIcon from '../../assets/images/icon-rain.webp';
+import snowIcon from '../../assets/images/icon-snow.webp';
+import clearIcon from '../../assets/images/icon-sunny.webp';
+import cloudyIcon from '../../assets/images/icon-overcast.webp';
 
 const WeatherInfo = ({ city, todayDate, weather }) => {
+  let weatherIcon;
+  switch (weather.current.weather_code) {
+    case 0:
+      weatherIcon = clearIcon;
+      break;
+    case 51:
+    case 53:
+    case 55:
+      weatherIcon = drizzleIcon;
+      break;
+    case 61:
+    case 63:
+    case 65:
+      weatherIcon = rainIcon;
+      break;
+    case 71:
+    case 73:
+    case 75:
+      weatherIcon = snowIcon;
+      break;
+    case 45:
+    case 48:
+      weatherIcon = cloudyIcon;
+      break;
+    default:
+      weatherIcon = clearIcon;
+  }
+
   return (
     <div className={styles.weatherInfoContainer}>
       <div className={styles.weatherInfoDisplay}>
@@ -11,7 +43,7 @@ const WeatherInfo = ({ city, todayDate, weather }) => {
         </div>
         <div className={styles.weatherInfoTemp}>
           <div className={styles.icon}>
-            <img src={overcastIcon} alt='' />
+            <img src={weatherIcon} alt='' />
           </div>
           <div className={styles.temp}>
             {weather.current.temperature.toFixed()}°

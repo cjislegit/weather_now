@@ -10,6 +10,7 @@ export async function getWeather(lat, lon) {
       'relative_humidity_2m',
       'precipitation',
       'wind_speed_10m',
+      'weather_code',
     ],
     hourly: 'temperature_2m',
     daily: 'weather_code,temperature_2m_max,temperature_2m_min',
@@ -37,6 +38,7 @@ export async function getWeather(lat, lon) {
       relative_humidity_2m: current.variables(2).value(),
       precipitation: current.variables(3).value(),
       wind_speed_10m: current.variables(4).value(),
+      weather_code: current.variables(5).value(),
     },
     hourly: {
       time: [
