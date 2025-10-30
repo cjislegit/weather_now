@@ -4,6 +4,7 @@ export async function getWeather(lat, lon) {
   const params = {
     latitude: lat,
     longitude: lon,
+    daily: ['temperature_2m_max', 'temperature_2m_min', 'weather_code'],
     current: [
       'temperature_2m',
       'apparent_temperature',
@@ -12,8 +13,6 @@ export async function getWeather(lat, lon) {
       'wind_speed_10m',
       'weather_code',
     ],
-    hourly: 'temperature_2m',
-    daily: 'weather_code,temperature_2m_max,temperature_2m_min',
   };
 
   const url = 'https://api.open-meteo.com/v1/forecast';
@@ -21,8 +20,8 @@ export async function getWeather(lat, lon) {
   const response = responses[0];
 
   const utcOffsetSeconds = response.utcOffsetSeconds();
-  const hourly = response.hourly();
   const current = response.current();
+  const daily = response.daily();
 
   const weatherData = {
     location: {
@@ -40,19 +39,21 @@ export async function getWeather(lat, lon) {
       wind_speed_10m: current.variables(4).value(),
       weather_code: current.variables(5).value(),
     },
-    hourly: {
-      time: [
-        ...Array(
-          (Number(hourly.timeEnd()) - Number(hourly.time())) / hourly.interval()
-        ),
-      ].map(
+    daily: {
+      time: Array.from(
+        {
+          length:
+            (Number(daily.timeEnd()) - Number(daily.time())) / daily.interval(),
+        },
         (_, i) =>
           new Date(
-            (Number(hourly.time()) + i * hourly.interval() + utcOffsetSeconds) *
+            (Number(daily.time()) + i * daily.interval() + utcOffsetSeconds) *
               1000
           )
       ),
-      temperature_2m: hourly.variables(0).valuesArray(),
+      temperature_2m_max: daily.variables(0).valuesArray(),
+      temperature_2m_min: daily.variables(1).valuesArray(),
+      weather_code: daily.variables(2).valuesArray(),
     },
   };
 
