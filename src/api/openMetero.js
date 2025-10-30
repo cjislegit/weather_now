@@ -56,6 +56,5 @@ export async function getWeather(lat, lon) {
       weather_code: daily.variables(2).valuesArray(),
     },
   };
-
   return weatherData;
 }

@@ -29,7 +29,6 @@ const Home = () => {
       try {
         const weatherData = await getWeather(location.lat, location.lon);
         setWeather(weatherData);
-        console.log(weatherData);
       } catch (err) {
         setError(err.message);
       }

@@ -8,7 +8,7 @@ const WeatherLayout = ({ city, todayDate, weather }) => {
     <div className={styles.weatherLayout}>
       <div className={styles.left}>
         <WeatherInfo city={city} todayDate={todayDate} weather={weather} />
-        <DailyForecast />
+        <DailyForecast dailyWeather={weather.daily} />
       </div>
       <HourlyForecast />
     </div>
