@@ -5,7 +5,7 @@ import dropdown from '../../assets/images/icon-dropdown.svg';
 import gear from '../../assets/images/icon-units.svg';
 import check from '../../assets/images/icon-checkmark.svg';
 
-const DropDown = ({ type }) => {
+const DropDown = ({ type, selectedDay, handleDayChange }) => {
   const [open, setOpen] = useState(false);
   const [unitType, setUnitType] = useState('metric');
 
@@ -19,6 +19,36 @@ const DropDown = ({ type }) => {
     );
   };
 
+  const getDayName = (selectedDay) => {
+    let day;
+    switch (selectedDay) {
+      case 'mo':
+        day = 'Monday';
+        break;
+      case 'tu':
+        day = 'Tuesday';
+        break;
+      case 'we':
+        day = 'Wednesday';
+        break;
+      case 'th':
+        day = 'Thursday';
+        break;
+      case 'fr':
+        day = 'Friday';
+        break;
+      case 'sa':
+        day = 'Saturday';
+        break;
+      case 'su':
+        day = 'Sunday';
+        break;
+      default:
+        day = 'Monday';
+    }
+    return day;
+  };
+
   return (
     <div className={style.dropDownContainer}>
       <div
@@ -29,7 +59,7 @@ const DropDown = ({ type }) => {
         }}
       >
         {type === 'units' && <img src={gear} alt='Gear' />}
-        <span>{type === 'units' ? 'Units' : 'Monday'}</span>
+        <span>{type === 'units' ? 'Units' : getDayName(selectedDay)}</span>
         <img src={dropdown} alt='dropdown arrow' />
       </div>
       {open && (
@@ -122,13 +152,48 @@ const DropDown = ({ type }) => {
             </div>
           ) : (
             <div className={style.dropDownDays}>
-              <div className={style.dropDownDayOption}>Monday</div>
-              <div className={style.dropDownDayOption}>Tuesday</div>
-              <div className={style.dropDownDayOption}>Wednesday</div>
-              <div className={style.dropDownDayOption}>Thursday</div>
-              <div className={style.dropDownDayOption}>Friday</div>
-              <div className={style.dropDownDayOption}>Saturday</div>
-              <div className={style.dropDownDayOption}>Sunday</div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('mo')}
+              >
+                Monday
+              </div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('tu')}
+              >
+                Tuesday
+              </div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('we')}
+              >
+                Wednesday
+              </div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('th')}
+              >
+                Thursday
+              </div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('fr')}
+              >
+                Friday
+              </div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('sa')}
+              >
+                Saturday
+              </div>
+              <div
+                className={style.dropDownDayOption}
+                onClick={() => handleDayChange('su')}
+              >
+                Sunday
+              </div>
             </div>
           )}
         </div>
