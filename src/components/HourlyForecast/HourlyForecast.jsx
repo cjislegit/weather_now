@@ -2,7 +2,7 @@ import styles from './HourlyForecast.module.css';
 import DropDown from '../DropDown/DropDown';
 import rain from '../../assets/images/icon-rain.webp';
 
-const HourlyForecast = () => {
+const HourlyForecast = ({ todayDate, hourlyWeather }) => {
   return (
     <div className={styles.hourlyForecastContainer}>
       <div className={styles.hourlyForecastHeader}>

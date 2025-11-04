@@ -10,7 +10,7 @@ const WeatherLayout = ({ city, todayDate, weather }) => {
         <WeatherInfo city={city} todayDate={todayDate} weather={weather} />
         <DailyForecast dailyWeather={weather.daily} />
       </div>
-      <HourlyForecast />
+      <HourlyForecast todayDate={todayDate} hourlyWeather={weather.hourly} />
     </div>
   );
 };

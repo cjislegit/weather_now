@@ -13,6 +13,7 @@ export async function getWeather(lat, lon) {
       'wind_speed_10m',
       'weather_code',
     ],
+    hourly: ['weather_code', 'temperature_2m'],
   };
 
   const url = 'https://api.open-meteo.com/v1/forecast';
@@ -22,6 +23,7 @@ export async function getWeather(lat, lon) {
   const utcOffsetSeconds = response.utcOffsetSeconds();
   const current = response.current();
   const daily = response.daily();
+  const hourly = response.hourly();
 
   const weatherData = {
     location: {
@@ -54,6 +56,22 @@ export async function getWeather(lat, lon) {
       temperature_2m_max: daily.variables(0).valuesArray(),
       temperature_2m_min: daily.variables(1).valuesArray(),
       weather_code: daily.variables(2).valuesArray(),
+    },
+    hourly: {
+      time: Array.from(
+        {
+          length:
+            (Number(hourly.timeEnd()) - Number(hourly.time())) /
+            hourly.interval(),
+        },
+        (_, i) =>
+          new Date(
+            (Number(hourly.time()) + i * hourly.interval() + utcOffsetSeconds) *
+              1000
+          )
+      ),
+      weather_code: hourly.variables(0).valuesArray(),
+      temperature_2m: hourly.variables(1).valuesArray(),
     },
   };
   return weatherData;
