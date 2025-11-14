@@ -6,18 +6,37 @@ import rain from '../../assets/images/icon-rain.webp';
 
 const HourlyForecast = ({ todayDate, hourlyWeather }) => {
   const [selectedDay, setSelectedDay] = useState(
-    todayDate.slice(0, 2).toLowerCase()
+    todayDate.slice(0, 3).toLowerCase()
   );
 
   const handleDayChange = (day) => {
     setSelectedDay(day);
   };
 
+  let hourlyCards = [];
+  const createHourlyCards = () => {
+    for (const key in hourlyWeather) {
+      if (key === 'time') {
+        for (const time of hourlyWeather[key]) {
+          if (time.toString().slice(0, 3).toLowerCase() == selectedDay) {
+            console.log(time.toLocaleTimeString());
+          } else {
+            break;
+          }
+        }
+      }
+    }
+  };
+
   return (
     <div className={styles.hourlyForecastContainer}>
       <div className={styles.hourlyForecastHeader}>
         <div className={styles.hourlyForecastTitle}>Hourly forecast</div>
-        <DropDown selectedDay={selectedDay} handleDayChange={handleDayChange} />
+        <DropDown
+          selectedDay={selectedDay}
+          handleDayChange={handleDayChange}
+          test={createHourlyCards}
+        />
       </div>
       <div className={styles.hourlyForecastCardContainer}>
         <div className={styles.hourlyForecastCard}>

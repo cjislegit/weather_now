@@ -5,7 +5,7 @@ import dropdown from '../../assets/images/icon-dropdown.svg';
 import gear from '../../assets/images/icon-units.svg';
 import check from '../../assets/images/icon-checkmark.svg';
 
-const DropDown = ({ type, selectedDay, handleDayChange }) => {
+const DropDown = ({ type, selectedDay, handleDayChange, test }) => {
   const [open, setOpen] = useState(false);
   const [unitType, setUnitType] = useState('metric');
 
@@ -22,25 +22,25 @@ const DropDown = ({ type, selectedDay, handleDayChange }) => {
   const getDayName = (selectedDay) => {
     let day;
     switch (selectedDay) {
-      case 'mo':
+      case 'mon':
         day = 'Monday';
         break;
-      case 'tu':
+      case 'tue':
         day = 'Tuesday';
         break;
-      case 'we':
+      case 'wed':
         day = 'Wednesday';
         break;
-      case 'th':
+      case 'thu':
         day = 'Thursday';
         break;
-      case 'fr':
+      case 'fri':
         day = 'Friday';
         break;
-      case 'sa':
+      case 'sat':
         day = 'Saturday';
         break;
-      case 'su':
+      case 'sun':
         day = 'Sunday';
         break;
       default:
@@ -50,7 +50,7 @@ const DropDown = ({ type, selectedDay, handleDayChange }) => {
   };
 
   return (
-    <div className={style.dropDownContainer}>
+    <div className={style.dropDownContainer} onClick={test}>
       <div
         onClick={toggleDropDown}
         className={style.dropDownButton}
