@@ -19,7 +19,12 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
       if (key === 'time') {
         for (const time of hourlyWeather[key]) {
           if (time.toString().slice(0, 3).toLowerCase() == selectedDay) {
-            console.log(time.toLocaleTimeString());
+            console.log(
+              time.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                hour12: true,
+              })
+            );
           } else {
             break;
           }
