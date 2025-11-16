@@ -39,7 +39,14 @@ const WeatherInfo = ({ city, todayDate, weather }) => {
       <div className={styles.weatherInfoDisplay}>
         <div className={styles.weatherInfoLocation}>
           <div className={styles.location}>{city}</div>
-          <div className={styles.date}>{todayDate}</div>
+          <div className={styles.date}>
+            {todayDate.toLocaleDateString('en-US', {
+              weekday: 'long',
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </div>
         </div>
         <div className={styles.weatherInfoTemp}>
           <div className={styles.icon}>
