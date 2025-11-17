@@ -6,34 +6,21 @@ import rain from '../../assets/images/icon-rain.webp';
 
 const HourlyForecast = ({ todayDate, hourlyWeather }) => {
   console.log(typeof todayDate);
-  const [selectedDay, setSelectedDay] = useState(
-    todayDate
-      .toLocaleDateString('en-US', {
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-      })
-      .slice(0, 3)
-      .toLowerCase()
-  );
+  const [selectedDay, setSelectedDay] = useState(todayDate);
 
   const handleDayChange = (day) => {
     setSelectedDay(day);
   };
 
   let hours = [];
+  let hourIndex = [];
   const createHourlyCards = () => {
-    let hourIndex = 0;
     for (const key in hourlyWeather) {
       if (key === 'time') {
         for (let index = 0; index < hourlyWeather[key].length; index++) {
-          console.log(
-            hourlyWeather[key][index].toString().slice(0, 3).toLowerCase()
-          );
           if (
-            hourlyWeather[key][index].toString().slice(0, 3).toLowerCase() ==
-            selectedDay
+            hourlyWeather[key][index].toDateString() ===
+            selectedDay.toDateString()
           ) {
             hours.push(
               hourlyWeather[key][index].toLocaleTimeString('en-US', {
@@ -41,29 +28,16 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
                 hour12: true,
               })
             );
-            hourIndex++;
-            console.log(hours);
-          } else {
-            break;
+            hourIndex.push(index);
           }
-          // for (const time of hourlyWeather[key]) {
-          //   if (time.toString().slice(0, 3).toLowerCase() == selectedDay) {
-          //     hours.push(
-          //       time.toLocaleTimeString('en-US', {
-          //         hour: 'numeric',
-          //         hour12: true,
-          //       })
-          //     );
-          //     hourIndex++;
-          //   } else {
-          //     break;
-          //   }
-          // }
         }
       }
+      console.log(hours);
       console.log(hourIndex);
     }
   };
+
+  createHourlyCards();
 
   return (
     <div className={styles.hourlyForecastContainer}>
@@ -76,78 +50,17 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
         />
       </div>
       <div className={styles.hourlyForecastCardContainer}>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
+        {hours.map((hour, index) => (
+          <div key={index} className={styles.hourlyForecastCard}>
+            <div className={styles.left}>
+              <img src={rain} alt='rain icon' />
+              <div className={styles.time}>{hour}</div>
+            </div>
+            <div className={styles.right}>
+              <div className={styles.temp}>20°</div>
+            </div>
           </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
-        <div className={styles.hourlyForecastCard}>
-          <div className={styles.left}>
-            <img src={rain} alt='rain icon' />
-            <div className={styles.time}>1 PM</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.temp}>20°</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

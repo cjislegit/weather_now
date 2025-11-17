@@ -59,7 +59,21 @@ const DropDown = ({ type, selectedDay, handleDayChange, test }) => {
         }}
       >
         {type === 'units' && <img src={gear} alt='Gear' />}
-        <span>{type === 'units' ? 'Units' : getDayName(selectedDay)}</span>
+        <span>
+          {type === 'units'
+            ? 'Units'
+            : getDayName(
+                selectedDay
+                  .toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                  .slice(0, 3)
+                  .toLowerCase()
+              )}
+        </span>
         <img src={dropdown} alt='dropdown arrow' />
       </div>
       {open && (
