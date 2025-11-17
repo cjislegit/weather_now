@@ -2,7 +2,11 @@ import { useState } from 'react';
 
 import styles from './HourlyForecast.module.css';
 import DropDown from '../DropDown/DropDown';
-import rain from '../../assets/images/icon-rain.webp';
+import drizzleIcon from '../../assets/images/icon-drizzle.webp';
+import rainIcon from '../../assets/images/icon-rain.webp';
+import snowIcon from '../../assets/images/icon-snow.webp';
+import clearIcon from '../../assets/images/icon-sunny.webp';
+import cloudyIcon from '../../assets/images/icon-overcast.webp';
 
 const HourlyForecast = ({ todayDate, hourlyWeather }) => {
   console.log(typeof todayDate);
@@ -39,6 +43,40 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
 
   createHourlyCards();
 
+  const getWeatherIcon = (code) => {
+    let weatherIcon;
+    switch (code) {
+      case 0:
+        weatherIcon = clearIcon;
+        break;
+      case 51:
+      case 53:
+      case 55:
+        weatherIcon = drizzleIcon;
+        break;
+      case 61:
+      case 63:
+      case 65:
+        weatherIcon = rainIcon;
+        break;
+      case 71:
+      case 73:
+      case 75:
+        weatherIcon = snowIcon;
+        break;
+      case 45:
+      case 48:
+      case 1:
+      case 2:
+      case 3:
+        weatherIcon = cloudyIcon;
+        break;
+      default:
+        weatherIcon = clearIcon;
+    }
+    return weatherIcon;
+  };
+
   return (
     <div className={styles.hourlyForecastContainer}>
       <div className={styles.hourlyForecastHeader}>
@@ -53,11 +91,16 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
         {hours.map((hour, index) => (
           <div key={index} className={styles.hourlyForecastCard}>
             <div className={styles.left}>
-              <img src={rain} alt='rain icon' />
+              <img
+                src={getWeatherIcon(hourlyWeather['weather_code'][index])}
+                alt='rain icon'
+              />
               <div className={styles.time}>{hour}</div>
             </div>
             <div className={styles.right}>
-              <div className={styles.temp}>20°</div>
+              <div className={styles.temp}>
+                {Math.trunc(hourlyWeather['temperature_2m'][index])}°
+              </div>
             </div>
           </div>
         ))}
