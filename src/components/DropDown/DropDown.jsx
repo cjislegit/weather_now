@@ -5,7 +5,7 @@ import dropdown from '../../assets/images/icon-dropdown.svg';
 import gear from '../../assets/images/icon-units.svg';
 import check from '../../assets/images/icon-checkmark.svg';
 
-const DropDown = ({ type, selectedDay, handleDayChange, test }) => {
+const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
   const [open, setOpen] = useState(false);
   const [unitType, setUnitType] = useState('metric');
 
@@ -49,8 +49,20 @@ const DropDown = ({ type, selectedDay, handleDayChange, test }) => {
     return day;
   };
 
+  let daysFormatted = [];
+  const formatDays = () => {
+    daysFormatted = Array.from(
+      new Map([...days].reverse().map((d) => [d.toDateString(), d])).values()
+    ).reverse();
+
+    daysFormatted.pop();
+
+    console.log(daysFormatted);
+  };
+  formatDays();
+
   return (
-    <div className={style.dropDownContainer} onClick={test}>
+    <div className={style.dropDownContainer}>
       <div
         onClick={toggleDropDown}
         className={style.dropDownButton}
@@ -166,7 +178,18 @@ const DropDown = ({ type, selectedDay, handleDayChange, test }) => {
             </div>
           ) : (
             <div className={style.dropDownDays}>
-              <div
+              {daysFormatted.map((day, index) => (
+                <div
+                  key={index}
+                  className={`${style.dropDownDayOption} ${
+                    selectedDay === 'mo' ? style.selected : ''
+                  }`}
+                  onClick={() => handleDayChange('mo')}
+                >
+                  {day.toLocaleDateString('en-US', { weekday: 'long' })}
+                </div>
+              ))}
+              {/* <div
                 className={`${style.dropDownDayOption} ${
                   selectedDay === 'mo' ? style.selected : ''
                 }`}
@@ -221,7 +244,7 @@ const DropDown = ({ type, selectedDay, handleDayChange, test }) => {
                 onClick={() => handleDayChange('su')}
               >
                 Sunday
-              </div>
+              </div> */}
             </div>
           )}
         </div>

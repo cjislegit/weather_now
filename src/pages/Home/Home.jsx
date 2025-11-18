@@ -17,12 +17,6 @@ const Home = () => {
 
   useEffect(() => {
     const now = new Date();
-    // const formattedDate = now.toLocaleDateString('en-US', {
-    //   weekday: 'long',
-    //   month: 'short',
-    //   day: 'numeric',
-    //   year: 'numeric',
-    // });
     setTodayDate(now);
 
     const fetchWeatherData = async () => {

@@ -9,7 +9,6 @@ import clearIcon from '../../assets/images/icon-sunny.webp';
 import cloudyIcon from '../../assets/images/icon-overcast.webp';
 
 const HourlyForecast = ({ todayDate, hourlyWeather }) => {
-  console.log(typeof todayDate);
   const [selectedDay, setSelectedDay] = useState(todayDate);
 
   const handleDayChange = (day) => {
@@ -36,8 +35,6 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
           }
         }
       }
-      console.log(hours);
-      console.log(hourIndex);
     }
   };
 
@@ -84,7 +81,7 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
         <DropDown
           selectedDay={selectedDay}
           handleDayChange={handleDayChange}
-          test={createHourlyCards}
+          days={hourlyWeather['time']}
         />
       </div>
       <div className={styles.hourlyForecastCardContainer}>
