@@ -29,6 +29,9 @@ const DailyForecast = ({ dailyWeather }) => {
         break;
       case 45:
       case 48:
+      case 1:
+      case 2:
+      case 3:
         weatherIcon = cloudyIcon;
         break;
       default:
