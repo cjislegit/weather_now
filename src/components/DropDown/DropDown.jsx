@@ -56,8 +56,6 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
     ).reverse();
 
     daysFormatted.pop();
-
-    console.log(daysFormatted);
   };
   formatDays();
 
@@ -184,67 +182,11 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
                   className={`${style.dropDownDayOption} ${
                     selectedDay === 'mo' ? style.selected : ''
                   }`}
-                  onClick={() => handleDayChange('mo')}
+                  onClick={() => handleDayChange(day)}
                 >
                   {day.toLocaleDateString('en-US', { weekday: 'long' })}
                 </div>
               ))}
-              {/* <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'mo' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('mo')}
-              >
-                Monday
-              </div>
-              <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'tu' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('tu')}
-              >
-                Tuesday
-              </div>
-              <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'we' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('we')}
-              >
-                Wednesday
-              </div>
-              <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'th' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('th')}
-              >
-                Thursday
-              </div>
-              <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'fr' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('fr')}
-              >
-                Friday
-              </div>
-              <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'sa' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('sa')}
-              >
-                Saturday
-              </div>
-              <div
-                className={`${style.dropDownDayOption} ${
-                  selectedDay === 'su' ? style.selected : ''
-                }`}
-                onClick={() => handleDayChange('su')}
-              >
-                Sunday
-              </div> */}
             </div>
           )}
         </div>

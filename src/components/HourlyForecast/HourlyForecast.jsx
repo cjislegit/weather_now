@@ -86,17 +86,23 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
       </div>
       <div className={styles.hourlyForecastCardContainer}>
         {hours.map((hour, index) => (
-          <div key={index} className={styles.hourlyForecastCard}>
+          <div
+            id={hourIndex[index]}
+            key={index}
+            className={styles.hourlyForecastCard}
+          >
             <div className={styles.left}>
               <img
-                src={getWeatherIcon(hourlyWeather['weather_code'][index])}
+                src={getWeatherIcon(
+                  hourlyWeather['weather_code'][hourIndex[index]]
+                )}
                 alt='rain icon'
               />
               <div className={styles.time}>{hour}</div>
             </div>
             <div className={styles.right}>
               <div className={styles.temp}>
-                {Math.trunc(hourlyWeather['temperature_2m'][index])}°
+                {Math.trunc(hourlyWeather['temperature_2m'][hourIndex[index]])}°
               </div>
             </div>
           </div>
