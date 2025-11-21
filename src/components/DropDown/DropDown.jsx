@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import style from './DropDown.module.css';
 import dropdown from '../../assets/images/icon-dropdown.svg';
@@ -59,8 +59,23 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
   };
   formatDays();
 
+  const dropDownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={style.dropDownContainer}>
+    <div className={style.dropDownContainer} ref={dropDownRef}>
       <div
         onClick={toggleDropDown}
         className={style.dropDownButton}
