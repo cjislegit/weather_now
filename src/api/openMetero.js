@@ -1,6 +1,6 @@
 import { fetchWeatherApi } from 'openmeteo';
 
-export async function getWeather(lat, lon) {
+export async function getWeather(lat, lon, unit) {
   const params = {
     latitude: lat,
     longitude: lon,
@@ -15,6 +15,12 @@ export async function getWeather(lat, lon) {
     ],
     hourly: ['weather_code', 'temperature_2m'],
   };
+
+  if (unit != 'metric') {
+    params.wind_speed_unit = 'mph';
+    params.temperature_unit = 'fahrenheit';
+    params.precipitation_unit = 'inch';
+  }
 
   const url = 'https://api.open-meteo.com/v1/forecast';
   const responses = await fetchWeatherApi(url, params);

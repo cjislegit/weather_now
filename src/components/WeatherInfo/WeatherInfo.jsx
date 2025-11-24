@@ -5,7 +5,7 @@ import snowIcon from '../../assets/images/icon-snow.webp';
 import clearIcon from '../../assets/images/icon-sunny.webp';
 import cloudyIcon from '../../assets/images/icon-overcast.webp';
 
-const WeatherInfo = ({ city, todayDate, weather }) => {
+const WeatherInfo = ({ city, todayDate, weather, unit }) => {
   let weatherIcon;
   switch (weather.current.weather_code) {
     case 0:
@@ -76,12 +76,15 @@ const WeatherInfo = ({ city, todayDate, weather }) => {
         <div className={styles.detailsItem}>
           <div className={styles.label}>Wind</div>
           <div className={styles.value}>
-            {weather.current.wind_speed_10m.toFixed()} km/h
+            {weather.current.wind_speed_10m.toFixed()}{' '}
+            {unit === 'metric' ? 'km/h' : 'mph'}
           </div>
         </div>
         <div className={styles.detailsItem}>
           <div className={styles.label}>Precipitation</div>
-          <div className={styles.value}>{weather.current.precipitation} mm</div>
+          <div className={styles.value}>
+            {weather.current.precipitation} {unit === 'metric' ? 'mm' : 'in'}
+          </div>
         </div>
       </div>
     </div>

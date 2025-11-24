@@ -10,6 +10,7 @@ import { getCityFromCoords } from '../../api/geocoding';
 
 const Home = () => {
   const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
+  const [unit, setUnit] = useState('metric');
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState('Fullerton');
   const [todayDate, setTodayDate] = useState('');
@@ -21,23 +22,32 @@ const Home = () => {
 
     const fetchWeatherData = async () => {
       try {
-        const weatherData = await getWeather(location.lat, location.lon);
+        const weatherData = await getWeather(location.lat, location.lon, unit);
         setWeather(weatherData);
       } catch (err) {
         setError(err.message);
       }
     };
     fetchWeatherData();
-  }, []);
+  }, [unit]);
+
+  const handleUnitChange = () => {
+    setUnit((prevState) => (prevState === 'metric' ? 'imperial' : 'metric'));
+  };
 
   return (
     <div className={styles.homeContainer}>
-      <NavBar />
+      <NavBar handleUnitChange={handleUnitChange} unit={unit} />
       <Hero />
       <main>
         <SearchBar />
         {weather ? (
-          <WeatherLayout city={city} todayDate={todayDate} weather={weather} />
+          <WeatherLayout
+            city={city}
+            todayDate={todayDate}
+            weather={weather}
+            unit={unit}
+          />
         ) : (
           <p>Loading weather data...</p>
         )}

@@ -5,18 +5,18 @@ import dropdown from '../../assets/images/icon-dropdown.svg';
 import gear from '../../assets/images/icon-units.svg';
 import check from '../../assets/images/icon-checkmark.svg';
 
-const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
+const DropDown = ({
+  type,
+  selectedDay,
+  handleDayChange,
+  days = [],
+  handleUnitChange,
+  unit,
+}) => {
   const [open, setOpen] = useState(false);
-  const [unitType, setUnitType] = useState('metric');
 
   const toggleDropDown = () => {
     setOpen((prevState) => !prevState);
-  };
-
-  const handleUnitsChange = () => {
-    setUnitType((prevState) =>
-      prevState === 'metric' ? 'imperial' : 'metric'
-    );
   };
 
   const getDayName = (selectedDay) => {
@@ -106,10 +106,10 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
           {type === 'units' ? (
             <div className={style.dropDownUnits}>
               <div
-                onClick={handleUnitsChange}
+                onClick={handleUnitChange}
                 className={style.dropDownUnitsTitle}
               >
-                {unitType === 'imperial'
+                {unit === 'imperial'
                   ? 'Switch to Metric'
                   : 'Switch to Imperial'}
               </div>
@@ -119,23 +119,19 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
                 </div>
                 <div
                   className={`${style.dropDownUnitsOption} ${
-                    unitType === 'metric' ? style.selected : ''
+                    unit === 'metric' ? style.selected : ''
                   }`}
                 >
                   <span>Celsius (°C)</span>
-                  {unitType === 'metric' && (
-                    <img src={check} alt='check mark' />
-                  )}
+                  {unit === 'metric' && <img src={check} alt='check mark' />}
                 </div>
                 <div
                   className={`${style.dropDownUnitsOption} ${
-                    unitType === 'imperial' ? style.selected : ''
+                    unit === 'imperial' ? style.selected : ''
                   } `}
                 >
                   <spam>Fahrenheit (°F)</spam>
-                  {unitType === 'imperial' && (
-                    <img src={check} alt='check mark' />
-                  )}
+                  {unit === 'imperial' && <img src={check} alt='check mark' />}
                 </div>
               </div>
               <div className={style.dropDownUnitsSection}>
@@ -144,23 +140,19 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
                 </div>
                 <div
                   className={`${style.dropDownUnitsOption} ${
-                    unitType === 'metric' ? style.selected : ''
+                    unit === 'metric' ? style.selected : ''
                   } `}
                 >
                   <spam>km/h</spam>
-                  {unitType === 'metric' && (
-                    <img src={check} alt='check mark' />
-                  )}
+                  {unit === 'metric' && <img src={check} alt='check mark' />}
                 </div>
                 <div
                   className={`${style.dropDownUnitsOption} ${
-                    unitType === 'imperial' ? style.selected : ''
+                    unit === 'imperial' ? style.selected : ''
                   } `}
                 >
                   <spam>mph</spam>
-                  {unitType === 'imperial' && (
-                    <img src={check} alt='check mark' />
-                  )}
+                  {unit === 'imperial' && <img src={check} alt='check mark' />}
                 </div>
               </div>
               <div className={style.dropDownUnitsSection}>
@@ -169,23 +161,19 @@ const DropDown = ({ type, selectedDay, handleDayChange, days = [] }) => {
                 </div>
                 <div
                   className={`${style.dropDownUnitsOption} ${
-                    unitType === 'metric' ? style.selected : ''
+                    unit === 'metric' ? style.selected : ''
                   } `}
                 >
                   <spam>Millimeters (mm)</spam>
-                  {unitType === 'metric' && (
-                    <img src={check} alt='check mark' />
-                  )}
+                  {unit === 'metric' && <img src={check} alt='check mark' />}
                 </div>
                 <div
                   className={`${style.dropDownUnitsOption} ${
-                    unitType === 'imperial' ? style.selected : ''
+                    unit === 'imperial' ? style.selected : ''
                   } `}
                 >
                   <spam>Inches (In)</spam>
-                  {unitType === 'imperial' && (
-                    <img src={check} alt='check mark' />
-                  )}
+                  {unit === 'imperial' && <img src={check} alt='check mark' />}
                 </div>
               </div>
             </div>
