@@ -15,6 +15,7 @@ const Home = () => {
   const [city, setCity] = useState('Fullerton');
   const [todayDate, setTodayDate] = useState('');
   const [error, setError] = useState(null);
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     const now = new Date();
@@ -29,7 +30,7 @@ const Home = () => {
       }
     };
     fetchWeatherData();
-    console.log(getCoordsFromCity(city));
+    getCoordsFromCity(city).then((data) => console.log(data))
   }, [unit]);
 
   const handleUnitChange = () => {
@@ -41,7 +42,7 @@ const Home = () => {
       <NavBar handleUnitChange={handleUnitChange} unit={unit} />
       <Hero />
       <main>
-        <SearchBar />
+        <SearchBar cities={cities} setCities={setCities} />
         {weather ? (
           <WeatherLayout
             city={city}

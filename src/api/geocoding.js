@@ -8,6 +8,6 @@ export async function getCoordsFromCity(city) {
   const data = await response.json();
   // Depending on location, this might be city, town, village, etc.
   return (
-    data.results[0]
+    data.results
   );
 }
