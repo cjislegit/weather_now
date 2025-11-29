@@ -1,6 +1,6 @@
-export async function getCityFromCoords(lat, lon) {
+export async function getCoordsFromCity(city) {
   const response = await fetch(
-    `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+    `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=10&language=en&format=json`
   );
 
   if (!response.ok) throw new Error('Failed to reverse geocode');
@@ -8,9 +8,6 @@ export async function getCityFromCoords(lat, lon) {
   const data = await response.json();
   // Depending on location, this might be city, town, village, etc.
   return (
-    data.address.city ||
-    data.address.town ||
-    data.address.village ||
-    data.address.county
+    data.results[0]
   );
 }

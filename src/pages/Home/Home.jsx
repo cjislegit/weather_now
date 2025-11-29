@@ -6,7 +6,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import WeatherLayout from '../../layout/Weather/WeatherLayout';
 import styles from './Home.module.css';
 import { getWeather } from '../../api/openMetero';
-import { getCityFromCoords } from '../../api/geocoding';
+import { getCoordsFromCity } from '../../api/geocoding';
 
 const Home = () => {
   const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
@@ -29,6 +29,7 @@ const Home = () => {
       }
     };
     fetchWeatherData();
+    console.log(getCoordsFromCity(city));
   }, [unit]);
 
   const handleUnitChange = () => {
