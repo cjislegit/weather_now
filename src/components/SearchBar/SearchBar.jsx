@@ -1,12 +1,30 @@
 import styles from './SearchBar.module.css';
 import search from '../../assets/images/icon-search.svg';
+import { getCoordsFromCity } from '../../api/geocoding';
+import { useState } from 'react'; 
+import { useEffect } from 'react';
 
-const SearchBar = ({ cities, setCities }) => {
+const SearchBar = ({ setLocation, setCity }) => {
+  const [cities, setCities] = useState([]);
+  const [searchCity, setSearchCity] = useState('');
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const cities = await getCoordsFromCity(searchCity);
+        setCities(cities);
+       } catch (error) {
+        console.error(`Error fetching cities: ${error}`);
+       }
+     }
+     fetchCities();
+  }, [searchCity])
+
   return (
     <div className={styles.searchBarContainer}>
       <div className={styles.search}>
         <img src={search} alt='search' />
-        <input type='text' placeholder='Search for a place...' onChange={(e) => setCities(e.target.value)} value={cities} />
+        <input type='text' placeholder='Search for a place...' value={searchCity} onChange={(e) => setSearchCity(e.target.value)} />
       </div>
       <input type='button' value='Search' />
     </div>

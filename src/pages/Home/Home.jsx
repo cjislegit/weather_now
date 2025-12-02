@@ -6,7 +6,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import WeatherLayout from '../../layout/Weather/WeatherLayout';
 import styles from './Home.module.css';
 import { getWeather } from '../../api/openMetero';
-import { getCoordsFromCity } from '../../api/geocoding';
+
 
 const Home = () => {
   const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
@@ -30,7 +30,6 @@ const Home = () => {
       }
     };
     fetchWeatherData();
-    getCoordsFromCity(city).then((data) => console.log(data))
   }, [unit]);
 
   const handleUnitChange = () => {
@@ -42,7 +41,7 @@ const Home = () => {
       <NavBar handleUnitChange={handleUnitChange} unit={unit} />
       <Hero />
       <main>
-        <SearchBar cities={cities} setCities={setCities} />
+        <SearchBar setLocation={setLocation} setCity={setCity} />
         {weather ? (
           <WeatherLayout
             city={city}
