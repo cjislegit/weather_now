@@ -27,6 +27,15 @@ const SearchBar = ({ setLocation, setCity }) => {
         <input type='text' placeholder='Search for a place...' value={searchCity} onChange={(e) => setSearchCity(e.target.value)} />
       </div>
       <input type='button' value='Search' />
+      {cities.length > 0 && (
+        <div className={styles.citiesList}>
+          {cities.map((city, index) => (
+            <div key={index} className={styles.city} onClick={() => setLocation(city)}>
+              {city.name}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
