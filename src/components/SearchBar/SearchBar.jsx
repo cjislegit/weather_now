@@ -31,7 +31,7 @@ const SearchBar = ({ setLocation, setCity }) => {
         <div className={styles.citiesList}>
           {cities.map((city, index) => (
             <div key={index} className={styles.city} onClick={() => setLocation(city)}>
-              {city.name}
+              {city.name}, {city.admin1}, {city.country}
             </div>
           ))}
         </div>
