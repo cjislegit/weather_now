@@ -43,6 +43,20 @@
   max-width: 36.875rem;
 }
 
+.citiesList {
+  background-color: var(--neutral-800);
+  padding: 0.375rem 0.5rem;
+  position: absolute;
+  top: 18.2rem;
+  width: 100%;
+  max-width: 45rem;
+  font-family: DM Sans, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+
 @media (min-width: 768px) {
   .searchBarContainer input[type='button'] {
     max-width: 7.125rem;
