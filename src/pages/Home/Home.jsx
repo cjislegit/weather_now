@@ -11,7 +11,7 @@ const Home = () => {
   const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
   const [unit, setUnit] = useState('metric');
   const [weather, setWeather] = useState(null);
-  const [city, setCity] = useState('Fullerton');
+  const [city, setCity] = useState('Fullerton, California, United States');
   const [todayDate, setTodayDate] = useState('');
   const [error, setError] = useState(null);
   const [cities, setCities] = useState([]);

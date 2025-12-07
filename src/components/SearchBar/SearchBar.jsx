@@ -40,7 +40,8 @@ const SearchBar = ({ setLocation, setCity }) => {
               className={styles.city}
               onClick={() => {
                 setLocation({ lat: city.latitude, lon: city.longitude });
-                setCity(city.name);
+                setCity(`${city.name}, ${city.admin1}, ${city.country}`);
+                setSearchCity(`${city.name}, ${city.admin1}, ${city.country}`);
               }}
             >
               {city.name}, {city.admin1}, {city.country}
