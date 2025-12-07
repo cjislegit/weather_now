@@ -7,7 +7,6 @@ import WeatherLayout from '../../layout/Weather/WeatherLayout';
 import styles from './Home.module.css';
 import { getWeather } from '../../api/openMetero';
 
-
 const Home = () => {
   const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
   const [unit, setUnit] = useState('metric');
@@ -30,7 +29,7 @@ const Home = () => {
       }
     };
     fetchWeatherData();
-  }, [unit]);
+  }, [unit, location]);
 
   const handleUnitChange = () => {
     setUnit((prevState) => (prevState === 'metric' ? 'imperial' : 'metric'));
