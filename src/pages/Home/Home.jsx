@@ -14,7 +14,6 @@ const Home = () => {
   const [city, setCity] = useState('Fullerton, California, United States');
   const [todayDate, setTodayDate] = useState('');
   const [error, setError] = useState(null);
-  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     const now = new Date();
