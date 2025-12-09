@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 const SearchBar = ({ setLocation, setCity }) => {
   const [cities, setCities] = useState([]);
   const [searchCity, setSearchCity] = useState('');
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -20,6 +21,31 @@ const SearchBar = ({ setLocation, setCity }) => {
     fetchCities();
   }, [searchCity]);
 
+  const selectCity = (city) => {
+    setLocation({ lat: city.latitude, lon: city.longitude });
+    setCity(`${city.name}, ${city.admin1}, ${city.country}`);
+    setSearchCity(`${city.name}, ${city.admin1}, ${city.country}`);
+    setCities([]);
+    setActiveIndex(-1);
+  };
+
+
+  const handleKeyDown = (e) => {
+    if (cities.length === 0) return;
+    
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActiveIndex(prev => (prev < cities.length - 1 ? prev + 1 : prev))
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActiveIndex(prev => (prev > 0 ? prev - 1 : prev))
+    } else if (e.key === 'Enter') {
+       if (activeIndex >= 0 && activeIndex < cities.length) {
+        selectCity(cities[activeIndex]);
+       }
+     }
+   }
+
   return (
     <div className={styles.searchBarContainer}>
       <div className={styles.search}>
@@ -29,6 +55,7 @@ const SearchBar = ({ setLocation, setCity }) => {
           placeholder='Search for a place...'
           value={searchCity}
           onChange={(e) => setSearchCity(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
       </div>
       <input type='button' value='Search' />
@@ -37,12 +64,9 @@ const SearchBar = ({ setLocation, setCity }) => {
           {cities.map((city, index) => (
             <div
               key={index}
-              className={styles.city}
-              onClick={() => {
-                setLocation({ lat: city.latitude, lon: city.longitude });
-                setCity(`${city.name}, ${city.admin1}, ${city.country}`);
-                setSearchCity(`${city.name}, ${city.admin1}, ${city.country}`);
-              }}
+              className={`${styles.city} ${index === activeIndex ? styles.active : ''}`}
+              onClick={() => selectCity(city)}
+              onMouseEnter={() => setActiveIndex(index)}
             >
               {city.name}, {city.admin1}, {city.country}
             </div>

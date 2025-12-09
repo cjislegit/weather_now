@@ -64,11 +64,14 @@
   border: 2px solid transparent;
 }
 
-.city:hover {
+
+.city:hover,
+.active {
   background-color: var(--neutral-700);
   border-color: var(--neutral-600);
   cursor: pointer;
 }
+
 
 @media (min-width: 768px) {
   .searchBarContainer input[type='button'] {
