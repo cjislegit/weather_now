@@ -47,6 +47,10 @@
   justify-content: space-between;
 }
 
+.dailyForecastCardSkeleton {
+  padding: 0;
+}
+
 @media (min-width: 768px) {
   .dailyForecastCardContainer {
     gap: 1rem;

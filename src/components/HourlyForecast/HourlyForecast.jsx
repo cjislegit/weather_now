@@ -7,8 +7,11 @@ import rainIcon from '../../assets/images/icon-rain.webp';
 import snowIcon from '../../assets/images/icon-snow.webp';
 import clearIcon from '../../assets/images/icon-sunny.webp';
 import cloudyIcon from '../../assets/images/icon-overcast.webp';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-const HourlyForecast = ({ todayDate, hourlyWeather }) => {
+const HourlyForecast = ({ todayDate, weather, isLoading }) => {
+  let hourlyWeather = weather ? weather.hourly : null;
   const [selectedDay, setSelectedDay] = useState(todayDate);
 
   const handleDayChange = (day) => {
@@ -38,7 +41,9 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
     }
   };
 
-  createHourlyCards();
+  // if (!isLoading) {
+  //   createHourlyCards();
+  // }
 
   const getWeatherIcon = (code) => {
     let weatherIcon;
@@ -78,35 +83,48 @@ const HourlyForecast = ({ todayDate, hourlyWeather }) => {
     <div className={styles.hourlyForecastContainer}>
       <div className={styles.hourlyForecastHeader}>
         <div className={styles.hourlyForecastTitle}>Hourly forecast</div>
-        <DropDown
+        {/* <DropDown
           selectedDay={selectedDay}
           handleDayChange={handleDayChange}
           days={hourlyWeather['time']}
-        />
+        /> */}
       </div>
       <div className={styles.hourlyForecastCardContainer}>
-        {hours.map((hour, index) => (
-          <div
-            id={hourIndex[index]}
-            key={index}
-            className={styles.hourlyForecastCard}
-          >
-            <div className={styles.left}>
-              <img
-                src={getWeatherIcon(
-                  hourlyWeather['weather_code'][hourIndex[index]]
-                )}
-                alt='rain icon'
-              />
-              <div className={styles.time}>{hour}</div>
+        {isLoading ? (
+          Array.from({ length: 7 }).map((_, index) => (
+            <div className={`${styles.hourlyForecastCard}`} key={index}>
+              <Skeleton width={85} height={150} />
             </div>
-            <div className={styles.right}>
-              <div className={styles.temp}>
-                {Math.trunc(hourlyWeather['temperature_2m'][hourIndex[index]])}°
+          ))
+        ) : (
+          <>
+            {hours.map((hour, index) => (
+              <div
+                id={hourIndex[index]}
+                key={index}
+                className={styles.hourlyForecastCard}
+              >
+                <div className={styles.left}>
+                  <img
+                    src={getWeatherIcon(
+                      hourlyWeather['weather_code'][hourIndex[index]]
+                    )}
+                    alt='rain icon'
+                  />
+                  <div className={styles.time}>{hour}</div>
+                </div>
+                <div className={styles.right}>
+                  <div className={styles.temp}>
+                    {Math.trunc(
+                      hourlyWeather['temperature_2m'][hourIndex[index]]
+                    )}
+                    °
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

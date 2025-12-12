@@ -6,6 +6,8 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import WeatherLayout from '../../layout/Weather/WeatherLayout';
 import styles from './Home.module.css';
 import { getWeather } from '../../api/openMetero';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Home = () => {
   const [location, setLocation] = useState({ lat: 33.87029, lon: -117.92534 }); // Default to Fullerton, CA
@@ -14,6 +16,7 @@ const Home = () => {
   const [city, setCity] = useState('Fullerton, California, United States');
   const [todayDate, setTodayDate] = useState('');
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const now = new Date();
@@ -23,8 +26,11 @@ const Home = () => {
       try {
         const weatherData = await getWeather(location.lat, location.lon, unit);
         setWeather(weatherData);
+        setIsLoading(false);
+        setError(null);
       } catch (err) {
         setError(err.message);
+        // setIsLoading(false);
       }
     };
     fetchWeatherData();
@@ -40,16 +46,13 @@ const Home = () => {
       <Hero />
       <main>
         <SearchBar setLocation={setLocation} setCity={setCity} />
-        {weather ? (
-          <WeatherLayout
-            city={city}
-            todayDate={todayDate}
-            weather={weather}
-            unit={unit}
-          />
-        ) : (
-          <p>Loading weather data...</p>
-        )}
+        <WeatherLayout
+          city={city}
+          todayDate={todayDate}
+          weather={weather}
+          unit={unit}
+          isLoading={isLoading}
+        />
       </main>
     </div>
   );

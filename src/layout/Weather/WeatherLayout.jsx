@@ -2,8 +2,10 @@ import DailyForecast from '../../components/DailyForecast/DailyForecast';
 import HourlyForecast from '../../components/HourlyForecast/HourlyForecast';
 import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 import styles from './WeatherLayout.module.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-const WeatherLayout = ({ city, todayDate, weather, unit }) => {
+const WeatherLayout = ({ city, todayDate, weather, unit, isLoading }) => {
   return (
     <div className={styles.weatherLayout}>
       <div className={styles.left}>
@@ -12,10 +14,15 @@ const WeatherLayout = ({ city, todayDate, weather, unit }) => {
           todayDate={todayDate}
           weather={weather}
           unit={unit}
+          isLoading={isLoading}
         />
-        <DailyForecast dailyWeather={weather.daily} />
+        <DailyForecast weather={weather} isLoading={isLoading} />
       </div>
-      <HourlyForecast todayDate={todayDate} hourlyWeather={weather.hourly} />
+      <HourlyForecast
+        todayDate={todayDate}
+        weather={weather}
+        isLoading={isLoading}
+      />
     </div>
   );
 };

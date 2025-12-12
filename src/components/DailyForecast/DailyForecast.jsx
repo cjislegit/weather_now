@@ -4,8 +4,12 @@ import rainIcon from '../../assets/images/icon-rain.webp';
 import snowIcon from '../../assets/images/icon-snow.webp';
 import clearIcon from '../../assets/images/icon-sunny.webp';
 import cloudyIcon from '../../assets/images/icon-overcast.webp';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-const DailyForecast = ({ dailyWeather }) => {
+const DailyForecast = ({ weather, isLoading }) => {
+  let dailyWeather = weather ? weather.daily : null;
+
   const getWeatherIcon = (code) => {
     let weatherIcon;
     switch (code) {
@@ -44,132 +48,166 @@ const DailyForecast = ({ dailyWeather }) => {
     <div className={styles.dailyForecastContainer}>
       <div className={styles.dailyForecastTitle}>Daily forecast</div>
       <div className={styles.dailyForecastCardContainer}>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[0].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[0])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[0].toFixed()}°
+        {isLoading ? (
+          Array.from({ length: 7 }).map((_, index) => (
+            <div
+              className={`${styles.dailyForecastCard} ${styles.dailyForecastCardSkeleton}`}
+              key={index}
+            >
+              <Skeleton width={85} height={150} />
             </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[0].toFixed()}°
+          ))
+        ) : (
+          <>
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[0].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[0])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[0].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[0].toFixed()}°
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[1].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[1])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[1].toFixed()}°
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[1].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[1])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[1].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[1].toFixed()}°
+                </div>
+              </div>
             </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[1].toFixed()}°
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[2].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[2])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[2].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[2].toFixed()}°
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[2].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[2])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[2].toFixed()}°
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[3].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[3])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[2].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[2].toFixed()}°
+                </div>
+              </div>
             </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[2].toFixed()}°
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[4].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[4])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[4].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[4].toFixed()}°
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[3].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[3])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[2].toFixed()}°
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[5].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[5])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[5].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[5].toFixed()}°
+                </div>
+              </div>
             </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[2].toFixed()}°
+            <div className={styles.dailyForecastCard}>
+              <div className={styles.day}>
+                {dailyWeather.time[6].toLocaleDateString('en-US', {
+                  weekday: 'short',
+                })}
+              </div>
+              <div className={styles.icon}>
+                <img
+                  src={getWeatherIcon(dailyWeather.weather_code[6])}
+                  alt=''
+                />
+              </div>
+              <div className={styles.range}>
+                <div className={styles.low}>
+                  {dailyWeather.temperature_2m_min[6].toFixed()}°
+                </div>
+                <div className={styles.high}>
+                  {dailyWeather.temperature_2m_max[6].toFixed()}°
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[4].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[4])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[4].toFixed()}°
-            </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[4].toFixed()}°
-            </div>
-          </div>
-        </div>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[5].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[5])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[5].toFixed()}°
-            </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[5].toFixed()}°
-            </div>
-          </div>
-        </div>
-        <div className={styles.dailyForecastCard}>
-          <div className={styles.day}>
-            {dailyWeather.time[6].toLocaleDateString('en-US', {
-              weekday: 'short',
-            })}
-          </div>
-          <div className={styles.icon}>
-            <img src={getWeatherIcon(dailyWeather.weather_code[6])} alt='' />
-          </div>
-          <div className={styles.range}>
-            <div className={styles.low}>
-              {dailyWeather.temperature_2m_min[6].toFixed()}°
-            </div>
-            <div className={styles.high}>
-              {dailyWeather.temperature_2m_max[6].toFixed()}°
-            </div>
-          </div>
-        </div>
+          </>
+        )}
       </div>
     </div>
   );
