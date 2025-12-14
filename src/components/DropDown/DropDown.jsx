@@ -9,11 +9,13 @@ const DropDown = ({
   type,
   selectedDay,
   handleDayChange,
-  days = [],
+  hourlyWeather,
   handleUnitChange,
   unit,
 }) => {
   const [open, setOpen] = useState(false);
+
+  let days = hourlyWeather ? hourlyWeather['time'] : [];
 
   const toggleDropDown = () => {
     setOpen((prevState) => !prevState);

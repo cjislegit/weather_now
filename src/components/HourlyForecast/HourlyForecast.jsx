@@ -83,11 +83,11 @@ const HourlyForecast = ({ todayDate, weather, isLoading }) => {
     <div className={styles.hourlyForecastContainer}>
       <div className={styles.hourlyForecastHeader}>
         <div className={styles.hourlyForecastTitle}>Hourly forecast</div>
-        {/* <DropDown
+        <DropDown
           selectedDay={selectedDay}
           handleDayChange={handleDayChange}
-          days={hourlyWeather['time']}
-        /> */}
+          hourlyWeather={hourlyWeather}
+        />
       </div>
       <div className={styles.hourlyForecastCardContainer}>
         {isLoading ? (
