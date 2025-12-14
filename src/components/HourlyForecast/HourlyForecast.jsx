@@ -41,9 +41,9 @@ const HourlyForecast = ({ todayDate, weather, isLoading }) => {
     }
   };
 
-  // if (!isLoading) {
-  //   createHourlyCards();
-  // }
+  if (!isLoading) {
+    createHourlyCards();
+  }
 
   const getWeatherIcon = (code) => {
     let weatherIcon;
@@ -92,8 +92,11 @@ const HourlyForecast = ({ todayDate, weather, isLoading }) => {
       <div className={styles.hourlyForecastCardContainer}>
         {isLoading ? (
           Array.from({ length: 7 }).map((_, index) => (
-            <div className={`${styles.hourlyForecastCard}`} key={index}>
-              <Skeleton width={85} height={150} />
+            <div
+              className={`${styles.hourlyForecastCard} ${styles.hourlyForecastCardSkeleton}`}
+              key={index}
+            >
+              <Skeleton width={350} height={60} />
             </div>
           ))
         ) : (

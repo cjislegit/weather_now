@@ -36,6 +36,10 @@
   padding: 0.625rem 0.75rem;
 }
 
+.hourlyForecastCardSkeleton {
+  padding: 0;
+}
+
 .left {
   display: flex;
   align-items: center;

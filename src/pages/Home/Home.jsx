@@ -14,13 +14,13 @@ const Home = () => {
   const [unit, setUnit] = useState('metric');
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState('Fullerton, California, United States');
-  const [todayDate, setTodayDate] = useState('');
+  const [todayDate, setTodayDate] = useState(() => new Date());
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const now = new Date();
-    setTodayDate(now);
+    // const now = new Date();
+    // setTodayDate(now);
 
     const fetchWeatherData = async () => {
       try {
