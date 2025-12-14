@@ -44,11 +44,15 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
 
   return (
     <div className={styles.weatherInfoContainer}>
-      {isLoading ? (
-        <Skeleton width={800} height={286} />
-      ) : (
-        <>
-          <div className={styles.weatherInfoDisplay}>
+      <div
+        className={`${styles.weatherInfoDisplay} ${
+          isLoading && styles.weatherInfoDisplaySkeleton
+        }`}
+      >
+        {isLoading ? (
+          <Skeleton width={700} height={246} />
+        ) : (
+          <>
             <div className={styles.weatherInfoLocation}>
               <div className={styles.location}>{city}</div>
               <div className={styles.date}>
@@ -68,37 +72,77 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
                 {weather.current.temperature.toFixed()}°
               </div>
             </div>
-          </div>
-          <div className={styles.weatherInfoDetails}>
-            <div className={styles.detailsItem}>
+          </>
+        )}
+      </div>
+      <div className={styles.weatherInfoDetails}>
+        <div
+          className={`${styles.detailsItem} ${
+            isLoading && styles.detailsItemSkeleton
+          }`}
+        >
+          {isLoading ? (
+            <Skeleton width={168} height={115} />
+          ) : (
+            <>
               <div className={styles.label}>Feels Like</div>
               <div className={styles.value}>
                 {weather.current.apparent_temperature.toFixed()}°
               </div>
-            </div>
-            <div className={styles.detailsItem}>
+            </>
+          )}
+        </div>
+        <div
+          className={`${styles.detailsItem} ${
+            isLoading && styles.detailsItemSkeleton
+          }`}
+        >
+          {isLoading ? (
+            <Skeleton width={168} height={115} />
+          ) : (
+            <>
               <div className={styles.label}>Humidity</div>
               <div className={styles.value}>
                 {weather.current.relative_humidity_2m}%
               </div>
-            </div>
-            <div className={styles.detailsItem}>
+            </>
+          )}
+        </div>
+        <div
+          className={`${styles.detailsItem} ${
+            isLoading && styles.detailsItemSkeleton
+          }`}
+        >
+          {isLoading ? (
+            <Skeleton width={168} height={115} />
+          ) : (
+            <>
               <div className={styles.label}>Wind</div>
               <div className={styles.value}>
                 {weather.current.wind_speed_10m.toFixed()}{' '}
                 {unit === 'metric' ? 'km/h' : 'mph'}
               </div>
-            </div>
-            <div className={styles.detailsItem}>
+            </>
+          )}
+        </div>
+        <div
+          className={`${styles.detailsItem} ${
+            isLoading && styles.detailsItemSkeleton
+          }`}
+        >
+          {isLoading ? (
+            <Skeleton width={168} height={115} />
+          ) : (
+            <>
               <div className={styles.label}>Precipitation</div>
               <div className={styles.value}>
                 {weather.current.precipitation}{' '}
                 {unit === 'metric' ? 'mm' : 'in'}
               </div>
-            </div>
-          </div>
-        </>
-      )}
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
