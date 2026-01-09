@@ -54,7 +54,12 @@ const DailyForecast = ({ weather, isLoading }) => {
               className={`${styles.dailyForecastCard} ${styles.dailyForecastCardSkeleton}`}
               key={index}
             >
-              <Skeleton width={85} height={150} />
+              <Skeleton
+                width={85}
+                height={150}
+                highlightColor='#FF820A'
+                baseColor='#ACACB7'
+              />
             </div>
           ))
         ) : (

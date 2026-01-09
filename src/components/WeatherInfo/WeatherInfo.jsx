@@ -50,7 +50,7 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
         }`}
       >
         {isLoading ? (
-          <Skeleton height={246} />
+          <Skeleton height={246} highlightColor='#FF820A' baseColor='#ACACB7' />
         ) : (
           <>
             <div className={styles.weatherInfoLocation}>
@@ -82,7 +82,12 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
           }`}
         >
           {isLoading ? (
-            <Skeleton width={168} height={115} />
+            <Skeleton
+              width={168}
+              height={115}
+              highlightColor='#FF820A'
+              baseColor='#ACACB7'
+            />
           ) : (
             <>
               <div className={styles.label}>Feels Like</div>
@@ -98,7 +103,12 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
           }`}
         >
           {isLoading ? (
-            <Skeleton width={168} height={115} />
+            <Skeleton
+              width={168}
+              height={115}
+              highlightColor='#FF820A'
+              baseColor='#ACACB7'
+            />
           ) : (
             <>
               <div className={styles.label}>Humidity</div>
@@ -114,7 +124,12 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
           }`}
         >
           {isLoading ? (
-            <Skeleton width={168} height={115} />
+            <Skeleton
+              width={168}
+              height={115}
+              highlightColor='#FF820A'
+              baseColor='#ACACB7'
+            />
           ) : (
             <>
               <div className={styles.label}>Wind</div>
@@ -131,7 +146,12 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
           }`}
         >
           {isLoading ? (
-            <Skeleton width={168} height={115} />
+            <Skeleton
+              width={168}
+              height={115}
+              highlightColor='#FF820A'
+              baseColor='#ACACB7'
+            />
           ) : (
             <>
               <div className={styles.label}>Precipitation</div>

@@ -96,7 +96,12 @@ const HourlyForecast = ({ todayDate, weather, isLoading }) => {
               className={`${styles.hourlyForecastCard} ${styles.hourlyForecastCardSkeleton}`}
               key={index}
             >
-              <Skeleton width={350} height={60} />
+              <Skeleton
+                width={350}
+                height={60}
+                highlightColor='#FF820A'
+                baseColor='#ACACB7'
+              />
             </div>
           ))
         ) : (
