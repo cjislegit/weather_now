@@ -92,6 +92,15 @@
   font-weight: lighter;
 }
 
+.weatherInfoDisplaySkeleton {
+  background-image: none;
+  display: block;
+}
+
+.weatherInfoLocation {
+  max-width: 100%;
+}
+
 @media (min-width: 768px) {
   .weatherInfoDisplay {
     background-image: url(../../assets/images/bg-today-large.svg);

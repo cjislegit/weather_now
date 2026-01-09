@@ -50,7 +50,7 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
         }`}
       >
         {isLoading ? (
-          <Skeleton width={700} height={246} />
+          <Skeleton height={246} />
         ) : (
           <>
             <div className={styles.weatherInfoLocation}>
