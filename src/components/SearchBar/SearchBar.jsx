@@ -40,11 +40,10 @@ const SearchBar = ({ setLocation, setCity }) => {
       setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
     } else if (e.key === 'Enter') {
       if (activeIndex >= 0 && activeIndex < cities.length) {
-        // selectCity(cities[activeIndex]);
-        console.log('Selected city:', cities[activeIndex]);
-        setSearchCity(
-          `${cities[activeIndex].name}, ${cities[activeIndex].admin1}, ${cities[activeIndex].country}`,
-        );
+        selectCity(cities[activeIndex]);
+        // setSearchCity(
+        //   `${cities[activeIndex].name}, ${cities[activeIndex].admin1}, ${cities[activeIndex].country}`,
+        // );
       }
     }
   };
@@ -61,7 +60,11 @@ const SearchBar = ({ setLocation, setCity }) => {
           onKeyDown={handleKeyDown}
         />
       </div>
-      <input type='button' value='Search' />
+      <input
+        type='button'
+        value='Search'
+        onClick={() => selectCity(cities[activeIndex])}
+      />
       {cities.length > 0 && (
         <div className={styles.citiesList}>
           {cities.map((city, index) => (
