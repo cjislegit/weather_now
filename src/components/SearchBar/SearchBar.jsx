@@ -48,6 +48,14 @@ const SearchBar = ({ setLocation, setCity }) => {
     }
   };
 
+  const handleSearchClick = () => {
+    if (activeIndex >= 0 && activeIndex < cities.length) {
+      selectCity(cities[activeIndex]);
+    } else {
+      console.log('No city selected');
+    }
+  };
+
   return (
     <div className={styles.searchBarContainer}>
       <div className={styles.search}>
@@ -60,11 +68,7 @@ const SearchBar = ({ setLocation, setCity }) => {
           onKeyDown={handleKeyDown}
         />
       </div>
-      <input
-        type='button'
-        value='Search'
-        onClick={() => selectCity(cities[activeIndex])}
-      />
+      <input type='button' value='Search' onClick={handleSearchClick} />
       {cities.length > 0 && (
         <div className={styles.citiesList}>
           {cities.map((city, index) => (
