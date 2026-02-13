@@ -39,9 +39,15 @@ const SearchBar = ({ setLocation, setCity }) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setActiveIndex((prev) => (prev < cities.length - 1 ? prev + 1 : prev));
+      setSearchCity(
+        `${cities[activeIndex]['name']}, ${cities[activeIndex]['admin1'] ? `${cities[activeIndex]['admin1']}, ` : ''} ${cities[activeIndex]['country']}`,
+      );
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
+      setSearchCity(
+        `${cities[activeIndex]['name']}, ${cities[activeIndex]['admin1'] ? `${cities[activeIndex]['admin1']}, ` : ''} ${cities[activeIndex]['country']}`,
+      );
     } else if (e.key === 'Enter') {
       if (activeIndex >= 0 && activeIndex < cities.length) {
         selectCity(cities[activeIndex]);
