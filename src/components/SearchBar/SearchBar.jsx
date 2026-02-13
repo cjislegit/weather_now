@@ -23,8 +23,12 @@ const SearchBar = ({ setLocation, setCity }) => {
 
   const selectCity = (city) => {
     setLocation({ lat: city.latitude, lon: city.longitude });
-    setCity(`${city.name}, ${city.admin1}, ${city.country}`);
-    setSearchCity(`${city.name}, ${city.admin1}, ${city.country}`);
+    setCity(
+      `${city.name}, ${city.admin1 ? `${city.admin1}, ` : ''} ${city.country}`,
+    );
+    setSearchCity(
+      `${city.name}, ${city.admin1 ? `${city.admin1}, ` : ''} ${city.country}`,
+    );
     setCities([]);
     setActiveIndex(-1);
   };
@@ -78,7 +82,7 @@ const SearchBar = ({ setLocation, setCity }) => {
               onClick={() => selectCity(city)}
               onMouseEnter={() => setActiveIndex(index)}
             >
-              {city.name}, {city.admin1}, {city.country}
+              {`${city.name}, ${city.admin1 ? `${city.admin1}, ` : ''} ${city.country}`}
             </div>
           ))}
         </div>
