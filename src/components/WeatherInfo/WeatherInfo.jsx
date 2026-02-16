@@ -156,7 +156,7 @@ const WeatherInfo = ({ city, todayDate, weather, unit, isLoading }) => {
             <>
               <div className={styles.label}>Precipitation</div>
               <div className={styles.value}>
-                {weather.current.precipitation}{' '}
+                {weather.current.precipitation.toFixed(2)}{' '}
                 {unit === 'metric' ? 'mm' : 'in'}
               </div>
             </>
