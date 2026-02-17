@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.search:focus-within {
+  border: 2px solid var(--neutral-200);
+}
+
 .search img {
   margin-right: 1rem;
   color: var(--neutral-200);
@@ -54,6 +58,14 @@
   background-color: var(--blue-700);
 }
 
+.searchBarContainer input[type='button']:focus {
+  outline: none;
+}
+
+.searchBarContainer input[type='button']:focus-visible {
+  border: 2px solid var(--neutral-200);
+}
+
 .citiesList {
   background-color: var(--neutral-800);
   padding: 0.375rem 0.5rem;
@@ -85,6 +97,9 @@
 }
 
 @media (min-width: 768px) {
+  .searchButtonContainer {
+    max-width: 7.125rem;
+  }
   .searchBarContainer input[type='button'] {
     max-width: 7.125rem;
     margin-top: 0;
