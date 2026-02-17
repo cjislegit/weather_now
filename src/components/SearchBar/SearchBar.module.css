@@ -13,6 +13,7 @@
   width: 100%;
   display: flex;
   max-width: 36.875rem;
+  cursor: pointer;
 }
 
 .search img {
@@ -30,6 +31,7 @@
     DM Sans,
     sans-serif;
   font-size: 1.25rem;
+  cursor: pointer;
 }
 
 .searchBarContainer input[type='button'] {
