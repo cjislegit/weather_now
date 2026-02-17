@@ -54,7 +54,7 @@ const DropDown = ({
   let daysFormatted = [];
   const formatDays = () => {
     daysFormatted = Array.from(
-      new Map([...days].reverse().map((d) => [d.toDateString(), d])).values()
+      new Map([...days].reverse().map((d) => [d.toDateString(), d])).values(),
     ).reverse();
 
     daysFormatted.pop();
@@ -84,6 +84,7 @@ const DropDown = ({
         style={{
           backgroundColor: type === 'units' ? '#262540' : '#3c3b5e',
         }}
+        tabIndex={0}
       >
         {type === 'units' && <img src={gear} alt='Gear' />}
         <span>
@@ -98,7 +99,7 @@ const DropDown = ({
                     year: 'numeric',
                   })
                   .slice(0, 3)
-                  .toLowerCase()
+                  .toLowerCase(),
               )}
         </span>
         <img src={dropdown} alt='dropdown arrow' />
@@ -110,6 +111,7 @@ const DropDown = ({
               <div
                 onClick={handleUnitChange}
                 className={style.dropDownUnitsTitle}
+                tabIndex={0}
               >
                 {unit === 'imperial'
                   ? 'Switch to Metric'
