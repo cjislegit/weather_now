@@ -32,6 +32,11 @@ Users should be able to:
 
 ![Weather dashboard showing current conditions in Fullerton, California with temperature, hourly forecast, and weekly outlook.](./src/assets/images/screenshot-localhost_5173-2026.02.16-15_15_19.png)
 
+### Links
+
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/real-time-weather-app-built-with-react-tV4dNHpK3J)
+- Live Site URL: [GitHub Pages](https://cjislegit.github.io/weather_now)
+
 ### Tech
 
 - Mobile-first workflow
